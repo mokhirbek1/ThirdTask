@@ -11,6 +11,7 @@ import com.company.task.warehouse.Warehouse;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class CustomArray implements Observable {
     private int id;
@@ -19,15 +20,20 @@ public class CustomArray implements Observable {
     private boolean sorted = false;
     private Observer observer = new CustomArrayObserver();
 
-    public CustomArray(int id, int size) {
+    public CustomArray(int id) {
         this.id = id;
-        this.size = size;
     }
 
     public CustomArray(int[] customArray, int id) {
         this.customArray = customArray;
-        size = customArray.length;
         this.id = id;
+    }
+
+    public void setSize(int size) throws TaskException{
+        if (size<0){
+            throw new TaskException("Size don't match");
+        }
+        this.size = size;
     }
 
     public void setId(int id) throws TaskException {
@@ -35,15 +41,6 @@ public class CustomArray implements Observable {
             throw new TaskException("id is less than zero");
         }
         this.id = id;
-    }
-
-    public void setSize(int size) throws TaskException {
-        if (size > 0) {
-            this.size = size;
-            customArray = new int[this.size];
-        } else {
-            throw new TaskException("size does not match");
-        }
     }
 
     public void setElement(int element, int index) throws TaskException {
@@ -85,31 +82,6 @@ public class CustomArray implements Observable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CustomArray that = (CustomArray) o;
-        return size == that.size && sorted == that.sorted && Arrays.equals(customArray, that.customArray);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(size, sorted);
-        result = 31 * result + Arrays.hashCode(customArray);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "CustomArray{" +
-                "id= " + id +
-                ", size=" + size +
-                ", customArray=" + Arrays.toString(customArray) +
-                ", sorted=" + sorted +
-                '}';
-    }
-
-    @Override
     public void attach(Observer observer) {
         this.observer = observer;
     }
@@ -124,4 +96,30 @@ public class CustomArray implements Observable {
         observer.actionPerformed(this);
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomArray that = (CustomArray) o;
+        return id == that.id && sorted == that.sorted && Arrays.equals(customArray, that.customArray) && Objects.equals(observer, that.observer);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(id, sorted, observer);
+        result = 31 * result + Arrays.hashCode(customArray);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringJoiner joiner = new StringJoiner(",").add("CustomArray{")
+                .add("id=" + id)
+                .add(", customArray=" + Arrays.toString(customArray))
+                .add(", sorted=" + sorted)
+                .add(", observer=" + observer)
+                .add("}");
+        return joiner.toString();
+    }
 }

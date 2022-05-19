@@ -3,7 +3,7 @@ package com.company.task.repository.impl;
 import com.company.task.entity.CustomArray;
 import com.company.task.entity.CustomArrayValues;
 import com.company.task.repository.Repository;
-import com.company.task.service.FindElementFromArray.FindElement;
+import com.company.task.service.findElementFromArray.FindElement;
 import com.company.task.service.Sort;
 import com.company.task.specification.Specification;
 import com.company.task.warehouse.Warehouse;
@@ -15,7 +15,7 @@ import java.util.StringJoiner;
 
 public class RepositoryImp implements Repository {
     private static final RepositoryImp instance = new RepositoryImp();
-    private static List<CustomArray> repository = new ArrayList<>();
+    private List<CustomArray> repository = new ArrayList<>();
 
     private RepositoryImp() {
     }

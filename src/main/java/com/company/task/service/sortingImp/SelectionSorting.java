@@ -1,4 +1,4 @@
-package com.company.task.service.SortingImp;
+package com.company.task.service.sortingImp;
 
 import com.company.task.entity.CustomArray;
 import com.company.task.exception.TaskException;
@@ -28,7 +28,7 @@ public class SelectionSorting implements Sort {
             customArray.setSorted(true);
         }
         catch (TaskException e){
-            logger.log(Level.INFO, "failed in selection sorting the array", e.getMessage());
+            logger.log(Level.WARNING, "failed in selection sorting the array", e.getMessage());
         }
     }
 }

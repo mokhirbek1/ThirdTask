@@ -1,18 +1,13 @@
 package com.company.task.warehouse;
 
-import com.company.task.entity.CustomArray;
 import com.company.task.entity.CustomArrayValues;
-import com.company.task.observer.Observer;
-import com.company.task.service.FindElementFromArray.FindElement;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Warehouse {
     private static final Warehouse instance = new Warehouse();
-    private static Map<Integer, CustomArrayValues> listOfArrayValue = new HashMap<>();
+    private Map<Integer, CustomArrayValues> listOfArrayValue = new HashMap<>();
 
     private Warehouse() {
     }

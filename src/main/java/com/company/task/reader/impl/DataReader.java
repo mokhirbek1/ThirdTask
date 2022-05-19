@@ -21,10 +21,10 @@ public class DataReader implements ArrayReader {
     public List<String> readData(String path) throws TaskException {
         List<String> list = new ArrayList<>();
         CustomArrayValidator validator = new CustomArrayValidator();
-        File file = new File(path);
         if (path==null){
             throw new TaskException("Path is incorrect");
         }
+        File file = new File(path);
         if (!file.exists()){
             throw new TaskException("File doesn't exist!");
         }
@@ -36,6 +36,7 @@ public class DataReader implements ArrayReader {
             logger.log(Level.INFO, "Validating is finished");
         }catch (IOException e){
             logger.log(Level.WARNING, "Didn't found the lines");
+            throw new TaskException("File doesn't exist!");
         }
         return list;
     }

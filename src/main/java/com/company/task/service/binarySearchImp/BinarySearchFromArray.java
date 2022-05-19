@@ -1,4 +1,4 @@
-package com.company.task.service.BinarySearchImp;
+package com.company.task.service.binarySearchImp;
 
 import com.company.task.entity.CustomArray;
 import com.company.task.service.Search;

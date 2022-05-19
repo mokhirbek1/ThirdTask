@@ -3,19 +3,19 @@ package com.company.task.observer.impl;
 import com.company.task.entity.CustomArray;
 import com.company.task.entity.CustomArrayValues;
 import com.company.task.observer.Observer;
-import com.company.task.service.FindElementFromArray.FindElement;
+import com.company.task.service.findElementFromArray.FindElement;
 import com.company.task.warehouse.Warehouse;
 
 public class CustomArrayObserver implements Observer {
-    private FindElement find;
-    private CustomArrayValues values;
-    private int id;
-    private int sum;
-    private int average;
-    private int min;
-    private int max;
     @Override
     public void actionPerformed(CustomArray customArray) {
+        FindElement find;
+        CustomArrayValues values;
+        int id;
+        int sum;
+        int average;
+        int min;
+        int max;
         find = new FindElement(customArray);
         id = customArray.getId();
         sum = find.findSumOfElement();

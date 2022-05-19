@@ -1,4 +1,4 @@
-package com.company.task.service.FindElementFromArray;
+package com.company.task.service.findElementFromArray;
 
 import com.company.task.entity.CustomArray;
 import com.company.task.exception.TaskException;
